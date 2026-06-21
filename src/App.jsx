@@ -1,15 +1,25 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
+import { HomeLayout } from "./pages";
 
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        index: true,
+        element: <div>home</div>,
+      },
+      {
+        path: "/about",
+        element: <div>about</div>,
+      },
+    ],
+  },
+]);
 function App() {
-  return (
-    <>
-      <h1>My Blogs</h1>
-      <button className="button-secondary">Click Me</button>
-      <div className="card">
-        <p>i am a card</p>
-      </div>
-    </>
-  );
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
